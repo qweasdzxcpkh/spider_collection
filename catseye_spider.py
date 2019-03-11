@@ -83,7 +83,7 @@ if __name__ == '__main__':
     ptable = PrettyTable(['片名', '实时票房（万元）', '票房占比', '排片占比', '上座率'])
     ptable.add_row(['------', '---', '---', '---', '---'])
 
-    soup = BeautifulSoup(result)
+    soup = BeautifulSoup(result, features="html.parser")
     ticket_tbody = soup.find(id='ticket_tbody')
     for ul in filter(lambda x: isinstance(x, Tag), ticket_tbody):
         ptable.add_row(analyse_by_film(ul))
